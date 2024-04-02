@@ -4,7 +4,7 @@ const prompts = document.querySelector(".prompts");
 
 
 function act(choice) {
-  const newConfig = gameConfig.find(config => config.choice === choice);
+  const newConfig = scriptConfig.find(config => config.choice === choice);
 
   // Create a new container for scene and dialogue
   const sceneDialogueContainer = document.createElement("div");
