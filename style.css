@@ -1,0 +1,108 @@
+/* Base styles */
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+  }
+  
+  /* This container will ensure everything is centered and has a max-width */
+  .container {
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center-align the content */
+    max-width: 800px; /* Adjust to your preference */
+    margin: auto; /* Center the container */
+  }
+  
+  /* The scene-dialogue container will hold each scene and dialogue side by side */
+  .scene-dialogue {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    border-radius: 5px; /* Rounded corners for the container */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    overflow: hidden; /* Ensures that child elements do not overflow the rounded corners */
+  }
+  
+  .header {
+    /* width: 100%; */
+    font-size: 1.2em; /* Slightly larger text for headers */
+    font-weight: bold; /* Bold font for headers */
+    padding: 10px 20px; /* Padding inside headers */
+    color: #fff;
+    border-top-left-radius: 10px; /* Rounds the top-left corner of the scene header */
+    border-top-right-radius: 10px; /* Rounds the top-right corner of the dialogue header */
+  }
+  
+  .scene-header {
+    background-color: #d32f2f; /* Red color for the scene header */
+  }
+  
+  .dialogue-header {
+    background-color: #388e3c; /* Green color for the dialogue header */
+  }
+  
+  .scene, .dialogue {
+    flex: 1;
+    margin: 0; /* No margin between scene and dialogue boxes */
+    padding: 20px; /* Space inside the boxes */
+    box-sizing: border-box;
+    border-top-left-radius: 10px; /* Rounds the top-left corner of the scene box */
+    border-top-right-radius: 10px; /* Rounds the top-right corner of the dialogue box */
+    border: 2px solid #c0c0c0; /* Adjust the color as needed */
+    border-radius: 10px; /* This rounds the corners of the boxes */
+  }
+  
+  .scene {
+    border-color: red;
+    margin-right: 10px; /* Add space between the scene and dialogue */
+  }
+  
+  .dialogue {
+    border-color: green;
+  }
+  
+  /* Ensure headers take up full width of their container */
+  .scene .header, .dialogue .header {
+    width: 100%; /* Full width */
+    margin: -20px -20px 20px -20px; /* Aligns header background with container edges */
+  }
+  
+  /* Options will now be a flex container to allow wrapping */
+  .options {
+    display: flex;
+    justify-content: center; /* Center the buttons */
+    flex-wrap: wrap; /* Allow the buttons to wrap if there are many */
+    gap: 10px; /* Adds a gap between buttons */
+    width: 100%;
+  }
+  
+  .action-btn {
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #ddd;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-weight: bold;
+    /* Add additional styles for buttons if necessary */
+  }
+  
+  .action-btn:hover {
+    background-color: #ccc; /* Darker shade on hover */
+  }
+  
+  .clicked {
+    /* Style for clicked (selected) button */
+    background-color: #bbb; /* A different color to indicate it's been clicked */
+    color: #333;
+    /* text-decoration: line-through; Optional, indicates the choice is made */
+    cursor: default; /* Indicates the button is not clickable */
+  }
+  .clicked:hover {
+    background-color: #bbb;
+  }
