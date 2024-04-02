@@ -1,4 +1,4 @@
-import scriptConfig from "./scriptConfig";
+import scriptConfig from "./scriptConfig.js";
 
 const prompts = document.querySelector(".prompts");
 
