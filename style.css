@@ -44,6 +44,18 @@ body {
   .dialogue-header {
     background-color: #388e3c; /* Green color for the dialogue header */
   }
+
+  /* Style for the FAQ section */
+  .FAQ {
+    flex: 1; /* FAQ takes up half the space */
+    padding: 10px; /* Add padding inside the FAQ container */
+    margin-right: 5px; /* Add some margin between FAQ and buttons */
+    /* Add more styles if needed */
+  }
+
+  .faq-header {
+    background-color: blue;
+  }
   
   .scene, .dialogue {
     flex: 1;
@@ -71,6 +83,23 @@ body {
     margin: -20px -20px 20px -20px; /* Aligns header background with container edges */
   }
   
+  .options-container {
+    display: flex;
+    justify-content: space-between; /* Align children (FAQ and buttons) on opposite ends */
+    align-items: start; /* Align children at the top of the container */
+    width: 100%; /* Take the full width of the parent container */
+  }
+  /* Style for the buttons container */
+  .buttons-container {
+    flex: 1; /* Buttons take up half the space */
+    display: flex; /* Use flexbox to layout buttons */
+    justify-content: center; /* Distribute buttons evenly */
+    align-items: center; /* Align buttons vertically */
+    padding: 10px; /* Add padding inside the buttons container */
+    gap: 10px;
+    /* Add more styles if needed */
+  }
+
   /* Options will now be a flex container to allow wrapping */
   .options {
     display: flex;
