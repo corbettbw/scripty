@@ -85,9 +85,12 @@ body {
   
   .options-container {
     display: flex;
-    justify-content: space-between; /* Align children (FAQ and buttons) on opposite ends */
-    align-items: start; /* Align children at the top of the container */
-    width: 100%; /* Take the full width of the parent container */
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    border-radius: 5px; /* Rounded corners for the container */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    overflow: hidden; /* Ensures that child elements do not overflow the rounded corners */
   }
   /* Style for the buttons container */
   .buttons-container {

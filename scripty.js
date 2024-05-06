@@ -37,6 +37,12 @@ function act(choice) {
     sceneDialogueContainer.appendChild(newScene);
     sceneDialogueContainer.appendChild(newDialogue);
 
+    // Remove existing FAQ from previous scenes if it exists
+    const existingFAQ = document.querySelector(".FAQ");
+    if (existingFAQ) {
+        existingFAQ.remove();
+    }
+
     // Check if the last child of the prompts container exists and has the "options" class
     if (prompts.lastChild && prompts.lastChild.classList && prompts.lastChild.classList.contains("options")) {
       const previousOptions = prompts.lastChild;
