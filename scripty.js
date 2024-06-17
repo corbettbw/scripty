@@ -97,7 +97,6 @@ function clearClickedState() {
 }
 
 function createFAQSection(selectedFaqChoice) {
-    // Create the FAQ container
     const faqContainer = document.createElement("div");
     faqContainer.classList.add("FAQ");
 
@@ -107,12 +106,18 @@ function createFAQSection(selectedFaqChoice) {
     faqHeader.textContent = "FAQ";
     faqContainer.appendChild(faqHeader);
 
-    // Create and append the search bar at the top of the FAQ container below the header
+    // Create and append the search bar at the top of the FAQ container
     const searchInput = document.createElement("input");
     searchInput.setAttribute("type", "text");
     searchInput.classList.add("faq-search");
     searchInput.placeholder = "Search questions...";
     faqContainer.appendChild(searchInput);
+
+    // Container for FAQ buttons to ensure vertical layout
+    const faqButtonsContainer = document.createElement("div");
+    faqButtonsContainer.style.display = "flex";
+    faqButtonsContainer.style.flexDirection = "column";
+    faqContainer.appendChild(faqButtonsContainer);
 
     // Add FAQ options below the search bar
     frequentlyAskedQuestions.slice(0, 3).forEach(faq => {
@@ -126,11 +131,31 @@ function createFAQSection(selectedFaqChoice) {
         if (faq.choice === selectedFaqChoice) {
             faqButton.classList.add("clicked");
         }
-        faqContainer.appendChild(faqButton);
+        faqButtonsContainer.appendChild(faqButton);
+    });
+
+    // Search functionality
+    searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        faqButtonsContainer.innerHTML = '';  // Clear existing buttons
+        const filteredFAQs = frequentlyAskedQuestions.filter(faq =>
+            faq.choice.toLowerCase().includes(searchTerm)
+        );
+        filteredFAQs.forEach(faq => {
+            const faqButton = document.createElement("button");
+            faqButton.classList.add("faq-button", "action-btn");
+            faqButton.textContent = faq.choice;
+            faqButton.onclick = () => {
+                updateFAQSelection(faq.choice);
+                act(faq.choice, true);
+            };
+            faqButtonsContainer.appendChild(faqButton);
+        });
     });
 
     return faqContainer;
 }
+
 
 
 function updateFAQSelection(choice) {
