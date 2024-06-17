@@ -52,31 +52,14 @@ function act(choice, fromFAQ = false) {
     // Create and handle FAQ display
     const newFAQ = createFAQSection();
     newFAQ.classList.add("FAQ");
-
-    // Create and append header for FAQ
-    const faqHeader = document.createElement("div");
-    faqHeader.classList.add("header", "faq-header");
-    faqHeader.textContent = "FAQ";
-
-    // Create search bar element
-    const searchInput = document.createElement("input");
-    searchInput.setAttribute("type", "text");
-    searchInput.classList.add("faq-search");
-    searchInput.placeholder = "Search questions...";
-
-    // Event listener for search bar
-    searchInput.addEventListener("input", (e) => {
-        const searchTerm = e.target.value.toLowerCase();
-        const filteredScenarios = scriptConfig.filter(scenario => 
-            scenario.dialogue.toLowerCase().includes(searchTerm) || scenario.scene.toLowerCase().includes(searchTerm));
-        displayFAQResults(filteredScenarios); // Function to display search results
-    });
-
-    newFAQ.appendChild(faqHeader);
-    newFAQ.appendChild(searchInput);
-
-    // newFAQ.appendChild(document.createTextNode(newConfig.FAQ));
-
+    
+    // Append the FAQ and buttons container to the newOptions container
+    newOptions.appendChild(newFAQ);
+    
+    // Create buttons container for actions
+    const buttonsContainer = createButtonsContainer(newConfig, fromFAQ);
+    newOptions.appendChild(buttonsContainer);
+    
     // Check if the last child of the prompts container exists and has the "options" class
     if (prompts.lastChild && prompts.lastChild.classList && prompts.lastChild.classList.contains("options")) {
         const previousOptions = prompts.lastChild;
@@ -90,14 +73,6 @@ function act(choice, fromFAQ = false) {
             }
         });
     }
-  
-    // Append the FAQ and buttons container to the newOptions container
-    newOptions.appendChild(newFAQ);
-
-    // Create buttons container for actions
-    const buttonsContainer = createButtonsContainer(newConfig, fromFAQ);
-    newOptions.appendChild(buttonsContainer);
-
     // Append the new scene, dialogue, and options to the prompts container
     prompts.appendChild(sceneDialogueContainer);
     prompts.appendChild(newOptions);
@@ -122,18 +97,32 @@ function clearClickedState() {
 }
 
 function createFAQSection(selectedFaqChoice) {
+    // Create the FAQ container
     const faqContainer = document.createElement("div");
     faqContainer.classList.add("FAQ");
 
+    // Create and append header for FAQ
+    const faqHeader = document.createElement("div");
+    faqHeader.classList.add("header", "faq-header");
+    faqHeader.textContent = "FAQ";
+    faqContainer.appendChild(faqHeader);
+
+    // Create and append the search bar at the top of the FAQ container below the header
+    const searchInput = document.createElement("input");
+    searchInput.setAttribute("type", "text");
+    searchInput.classList.add("faq-search");
+    searchInput.placeholder = "Search questions...";
+    faqContainer.appendChild(searchInput);
+
+    // Add FAQ options below the search bar
     frequentlyAskedQuestions.slice(0, 3).forEach(faq => {
         const faqButton = document.createElement("button");
-        faqButton.classList.add("faq-button", "action-btn"); // Ensure button has action button styling
+        faqButton.classList.add("faq-button", "action-btn");
         faqButton.textContent = faq.choice;
         faqButton.onclick = () => {
-            updateFAQSelection(faq.choice); // Function to handle FAQ selection
-            act(faq.choice, true); // Call act with the FAQ choice, marking it fromFAQ
+            updateFAQSelection(faq.choice);
+            act(faq.choice, true);
         };
-        // Style the clicked FAQ
         if (faq.choice === selectedFaqChoice) {
             faqButton.classList.add("clicked");
         }
@@ -142,6 +131,7 @@ function createFAQSection(selectedFaqChoice) {
 
     return faqContainer;
 }
+
 
 function updateFAQSelection(choice) {
     const faqButtons = document.querySelectorAll(".faq-button");
