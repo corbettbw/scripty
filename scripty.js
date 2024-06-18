@@ -65,13 +65,12 @@ function act(choice, fromFAQ = false) {
         const previousOptions = prompts.lastChild;
         const buttons = previousOptions.querySelectorAll("button");
         buttons.forEach(button => {
-            if (button.textContent === choice) {
-            button.disabled = true; // Disable the button
-            button.classList.add("clicked"); // Add a class to style the clicked button
-            } else {
-            button.style.display = "none"; // Hide the unclicked buttons
-            }
+            button.remove()
         });
+        const newButton = createButton(choice, fromFAQ);
+        newButton.disabled = true; // Disable the button
+        newButton.classList.add("clicked"); // Add a class to style the clicked button
+        previousOptions.querySelector(".buttons-container").appendChild(newButton);
     }
     // Append the new scene, dialogue, and options to the prompts container
     prompts.appendChild(sceneDialogueContainer);
@@ -169,16 +168,20 @@ function updateFAQSelection(choice) {
     });
 }
 
+function createButton(option, fromFAQ) {
+    const button = document.createElement("button");
+    button.className = 'action-btn';
+    button.textContent = option;
+    button.onclick = () => act(option, fromFAQ);
+    return button;
+}
+
 function createButtonsContainer(newConfig, fromFAQ) {
     const container = document.createElement("div");
     container.classList.add("buttons-container");
 
     newConfig.options.forEach(option => {
-        const button = document.createElement("button");
-        button.className = 'action-btn';
-        button.textContent = option;
-        button.onclick = () => act(option, fromFAQ);
-        container.appendChild(button);
+        container.appendChild(createButton(option, fromFAQ));
     });
 
     return container;
