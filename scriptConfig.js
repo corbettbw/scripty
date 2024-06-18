@@ -1,4 +1,4 @@
-const scriptConfig = [
+export const scriptConfig = [
     {
         choice: "Start",
         dialogue: "\"Oh No! There's a dragon!\"",
@@ -37,4 +37,23 @@ const scriptConfig = [
       },
 ];
 
-export default scriptConfig;
+export const frequentlyAskedQuestions = [
+    {
+        choice: "Who Are You?",
+        dialogue: "\"Magiq is a third adventuring party retained by Dragon's Hoard Bank to administer this program. Do you have any other questions for me?\"",
+        scene: "Provide this response if the caller asks who the agent is, or expresses confusion as to whether they are calling Dragon's Hoard Bank. \n If caller does not find the answer sufficient, transfer to supervisor.",
+        options: ["Further Questions", "Closing Statement", "Transfer to Supervisor"]
+    },
+    {
+        choice: "Caller Asks Personal Questions",
+        dialogue: "\"I'm sorry, it is the policy of Magiq that we cannot give out personal information about ourselves. Do you have any other questions for me?\"",
+        scene: "Provide this response if the caller asks any personal inforamtion about the agent, including geographic location, personal phone number, email, etc.",
+        options: ["Further Questions", "Closing Statement", "Transfer to Supervisor"]
+    },
+    {
+        choice: "Further Questions",
+        dialogue: "\"What can I help you with?\"",
+        scene: "Search FAQ for caller's question",
+        options: ["Call Helpdesk"]
+    }
+]

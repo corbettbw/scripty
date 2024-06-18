@@ -44,6 +44,43 @@ body {
   .dialogue-header {
     background-color: #388e3c; /* Green color for the dialogue header */
   }
+
+  /* Style for the FAQ section */
+  .FAQ {
+    flex: 1; /* FAQ takes up half the space */
+    padding: 10px; /* Add padding inside the FAQ container */
+    margin-right: 5px; /* Add some margin between FAQ and buttons */
+    border: 2px solid blue; /* Blue border around the FAQ */
+    margin: 5px;
+    padding: 0; /* Remove padding here to allow the header and content area to align properly */
+    box-sizing: border-box;
+    border-radius: 10px;
+  }
+
+/* FAQ Header */
+.faq-header {
+    background-color: blue; /* Blue background for the header */
+    color: white; /* White text color */
+    padding: 10px; /* Padding inside the header */
+    font-size: 1.2em;
+    font-weight: bold;
+    border-top-left-radius: 10px; /* Rounded corners for the header */
+    border-top-right-radius: 10px;
+}
+
+.faq-search {
+    padding: 8px;
+    margin-top: 5px;
+    width: 100%; /* Adjust based on design preference */
+    box-sizing: border-box;
+}
+
+.faq-content {
+    margin-top: 10px;
+    background: #f9f9f9; /* Light background for the results area */
+    border: 1px solid #ccc;
+    padding: 10px;
+}
   
   .scene, .dialogue {
     flex: 1;
@@ -71,6 +108,26 @@ body {
     margin: -20px -20px 20px -20px; /* Aligns header background with container edges */
   }
   
+  .options-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    border-radius: 5px; /* Rounded corners for the container */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    overflow: hidden; /* Ensures that child elements do not overflow the rounded corners */
+  }
+  /* Style for the buttons container */
+  .buttons-container {
+    flex: 1; /* Buttons take up half the space */
+    display: flex; /* Use flexbox to layout buttons */
+    justify-content: center; /* Distribute buttons evenly */
+    align-items: center; /* Align buttons vertically */
+    padding: 10px; /* Add padding inside the buttons container */
+    gap: 10px;
+    /* Add more styles if needed */
+  }
+
   /* Options will now be a flex container to allow wrapping */
   .options {
     display: flex;
