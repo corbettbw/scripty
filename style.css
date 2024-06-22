@@ -20,11 +20,32 @@ body {
   .scene-dialogue {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: stretch;
     margin-bottom: 20px;
     border-radius: 5px; /* Rounded corners for the container */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
     overflow: hidden; /* Ensures that child elements do not overflow the rounded corners */
+  }
+  
+  .scene, .dialogue {
+    flex: 1;
+    margin: 0; /* No margin between scene and dialogue boxes */
+    padding: 20px; /* Space inside the boxes */
+    box-sizing: border-box;
+    border-top-left-radius: 10px; /* Rounds the top-left corner of the scene box */
+    border-top-right-radius: 10px; /* Rounds the top-right corner of the dialogue box */
+    border: 2px solid #c0c0c0; /* Adjust the color as needed */
+    border-radius: 10px; /* This rounds the corners of the boxes */
+    min-height: 100px;
+  }
+  
+  .scene {
+    border-color: red;
+    margin-right: 10px; /* Add space between the scene and dialogue */
+  }
+  
+  .dialogue {
+    border-color: green;
   }
   
   .header {
@@ -56,7 +77,7 @@ body {
     box-sizing: border-box;
     border-radius: 10px;
   }
-
+  
 /* FAQ Header */
 .faq-header {
     background-color: blue; /* Blue background for the header */
@@ -82,25 +103,6 @@ body {
     padding: 10px;
 }
   
-  .scene, .dialogue {
-    flex: 1;
-    margin: 0; /* No margin between scene and dialogue boxes */
-    padding: 20px; /* Space inside the boxes */
-    box-sizing: border-box;
-    border-top-left-radius: 10px; /* Rounds the top-left corner of the scene box */
-    border-top-right-radius: 10px; /* Rounds the top-right corner of the dialogue box */
-    border: 2px solid #c0c0c0; /* Adjust the color as needed */
-    border-radius: 10px; /* This rounds the corners of the boxes */
-  }
-  
-  .scene {
-    border-color: red;
-    margin-right: 10px; /* Add space between the scene and dialogue */
-  }
-  
-  .dialogue {
-    border-color: green;
-  }
   
   /* Ensure headers take up full width of their container */
   .scene .header, .dialogue .header {
