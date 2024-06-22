@@ -27,13 +27,19 @@ function act(choice, fromFAQ = false) {
     const newScene = document.createElement("div");
     newScene.classList.add("scene");
     newScene.appendChild(sceneHeader);
-    newScene.appendChild(document.createTextNode(newConfig.scene));
+
+    const sceneContent = document.createElement("div")
+    sceneContent.innerHTML = newConfig.scene;  // Set inner HTML to include styled text
+    newScene.appendChild(sceneContent);
 
     // Create and append new dialogue
     const newDialogue = document.createElement("div");
     newDialogue.classList.add("dialogue");
     newDialogue.appendChild(dialogueHeader); // Append the header to the dialogue
-    newDialogue.appendChild(document.createTextNode(newConfig.dialogue));
+
+    const dialogueContent = document.createElement("div");  // Create a new div for the dialogue content
+    dialogueContent.innerHTML = newConfig.dialogue;  // Set inner HTML to include styled text
+    newDialogue.appendChild(dialogueContent);  // Append the content div after the header
     
     // Append the scene and dialogue to the scene-dialogue container
     sceneDialogueContainer.appendChild(newScene);
@@ -154,8 +160,6 @@ function createFAQSection(selectedFaqChoice) {
 
     return faqContainer;
 }
-
-
 
 function updateFAQSelection(choice) {
     const faqButtons = document.querySelectorAll(".faq-button");

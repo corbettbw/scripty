@@ -1,8 +1,8 @@
 export const scriptConfig = [
     {
         choice: "Start",
-        dialogue: "\"Oh No! There's a dragon!\"",
-        scene: "A dragon is in front of you!",
+        dialogue: `"Oh No! There's a <b style="color:red;">dragon!</b>"`,
+        scene: `A <b style="color:green;">dragon</b> is in front of you!`,
         options: ["Run", "Fight", "Talk"]
       },
       {
