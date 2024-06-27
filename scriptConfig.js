@@ -86,6 +86,55 @@ export const scriptConfig = [
         scene: "With a fierce gaze, you confront the dragon, ready for battle.",
         options: ["Start"]
       },
+      {
+        choice: "Received Letter",
+        dialogue: "\"Great! Could you confirm the account number mentioned in the letter?\"",
+        scene: "<h2>Verification needed for security reasons.</h2>",
+        options: ["Account Number Correct", "Account Number Incorrect"]
+    },
+    {
+        choice: "Account Number Correct",
+        dialogue: "\"Thank you for confirming. How may I assist you with the contents of the letter today?\"",
+        scene: "<h3>Proceed to assist with the content of the letter.</h3>",
+        options: ["Inquiry About Charges", "Request for Service Adjustment"]
+    },
+    {
+        choice: "Account Number Incorrect",
+        dialogue: "\"It seems there is a discrepancy. Let me put you on a brief hold while I fetch someone from our verification department.\"",
+        scene: "<h3>Put the caller on hold and prepare to transfer the call.</h3>",
+        options: ["Transfer to Verification Department"]
+    },
+    {
+        choice: "Transfer to Verification Department",
+        dialogue: "\"Hello, this is [Verification Agent], how can I assist you?\"",
+        scene: "<h1>Transfer Instructions</h1><p>Confirm details and assist the caller.</p>",
+        options: ["End The Call"]
+    },
+    {
+        choice: "Inquiry About Charges",
+        dialogue: "\"I see that the charges are due to an annual service fee as noted in your account type specifics. Would you like more information on how these charges are calculated or perhaps discuss changing your account type?\"",
+        scene: "<h3>Provide options to the caller for further assistance.</h3>",
+        options: ["Change Account Type", "End The Call"]
+    },
+    {
+        choice: "Request for Service Adjustment",
+        dialogue: "\"I will need to check with our adjustments department to see if we can waive or reduce the fee. One moment please.\"",
+        scene: "<h3>Prepare for a possible adjustment or transfer to another department.</h3>",
+        options: ["Adjustment Approved", "Adjustment Denied"]
+    },
+    {
+        choice: "Adjustment Approved",
+        dialogue: "\"Good news! We can adjust the fee for you. I've gone ahead and updated your account.\"",
+        scene: "<h2>Inform the caller of the successful adjustment.</h2>",
+        options: ["End The Call"]
+    },
+    {
+        choice: "Adjustment Denied",
+        dialogue: "\"I'm sorry, but after reviewing your account, we're unable to adjust the fee at this time.\"",
+        scene: "<h2>Provide options for the caller to escalate the issue or end the call.</h2>",
+        options: ["Transfer to Supervisor", "End The Call"]
+    }
+    
 ];
 
 export const frequentlyAskedQuestions = [
@@ -106,5 +155,23 @@ export const frequentlyAskedQuestions = [
         dialogue: "\"What can I help you with?\"",
         scene: "Search FAQ for caller's question",
         options: ["Call Helpdesk"]
-    }
+    },
+    {
+        choice: "What are your operating hours?",
+        dialogue: "\"Our call center is open from 8 AM to 8 PM, seven days a week, except on major planetary conjunctions.\"",
+        scene: "Use this answer if asked about operating hours.",
+        options: ["Further Questions", "End The Call"]
+    },
+    {
+        choice: "Can I email my query instead?",
+        dialogue: "\"Certainly! You can email us at help@dragons-hoard.com. We typically respond within one business cycle.\"",
+        scene: "Provide email contact information and expected response time.",
+        options: ["Further Questions", "End The Call"]
+    },
+    {
+        choice: "How do I update my contact details?",
+        dialogue: "\"You can update your contact details through our online portal or you can tell me what changes need to be made, and I can update them for you right now.\"",
+        scene: "Give options for updating contact details.",
+        options: ["Update Now", "Use Online Portal", "End The Call"]
+    }    
 ]
